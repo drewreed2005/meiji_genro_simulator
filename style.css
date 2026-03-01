@@ -1,0 +1,88 @@
+/* declaring global variables */
+:root {
+    --outline-size: 0.035em;
+    --outline-color: white;
+
+    --text-outline:
+        calc(-1 * var(--outline-size)) calc(-1 * var(--outline-size)) 0 var(--outline-color),
+         var(--outline-size) calc(-1 * var(--outline-size)) 0 var(--outline-color),
+        calc(-1 * var(--outline-size))  var(--outline-size) 0 var(--outline-color),
+         var(--outline-size)  var(--outline-size) 0 var(--outline-color),
+        calc(-1 * var(--outline-size)) 0 0 var(--outline-color),
+         var(--outline-size) 0 0 var(--outline-color),
+         0 calc(-1 * var(--outline-size)) 0 var(--outline-color),
+         0 var(--outline-size) 0 var(--outline-color);
+    
+    /* assets */
+    --left-panel-background: url("assets/left_panel_background.png");
+    --middle-panel-background: url("assets/middle_panel_background.png");
+    --right-panel-background: url("assets/right_panel_background.png");
+}
+
+/* Remove default margin */
+body {
+    margin: 0;
+    font-family: "New Tegomin", serif;
+    font-size: clamp(1rem, 1.5vw, 2vw);
+    color: black;
+    text-shadow: var(--text-outline);
+}
+
+h1 {
+    font-size: clamp(1.5rem, 3vw, 3rem);
+}
+
+/* Main layout */
+.layout {
+    display: flex;
+    height: 100vh;           /* fitting entire screen height */
+    overflow: hidden;        /* preventing page scroll */
+}
+
+/* Base panel styling */
+.panel {
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: local; /* keeps background fixed within container */
+    border-image: linear-gradient(to right, #efddb2, #a58e6a) 1;
+}
+
+/* Left Panel */
+.left-panel {
+    flex: 1;   
+    background-image: var(--left-panel-background);
+    border-right: 10px solid;
+    background-color: #000000;
+}
+
+/* Middle Panel */
+.middle-panel {
+    flex: 2.6;                         /* ~2.5–3x width */
+    background-image: var(--middle-panel-background);
+    border-left: 13px solid;
+    border-right: 10px solid;
+    background-color: #000000;
+}
+
+/* Right Panel */
+.right-panel {
+    flex: 1;
+    background-image: var(--right-panel-background);
+    border-left: 13px solid;
+    background-color: #000000;
+}
+
+/* Inner content spacing */
+.panel-content {
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+/* Scroll behavior ONLY in middle */
+.scrollable {
+    overflow-y: auto;
+    height: 100%;
+}
