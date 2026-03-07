@@ -187,9 +187,9 @@ class SimState {
         const endBox = SimUI.createEventBox();
         const endStatementContent = SimUI.createBoxContent();
         if (this.won)
-            endStatementContent.innerText = "Congratulations! Through your efforts, the Japanese developmental state has achieved marked success, modernizing in the Western image in just a short time. There is still a ways to go before the world sees Japan for the global power it strives to be.\n\n";
+            endStatementContent.innerText = "Congratulations! Through your efforts, Meiji Japan has achieved marked success, modernizing in the Western image in just a short time. There is still a ways to go before the world sees Japan for the global power it strives to be.\n\n";
         else
-            endStatementContent.innerText = "Unfortunately, Japan's developmental state has succumbed to unrest and failed to achieve the full breadth of modernization it set its sights on. Perhaps, with a bit better strategy, Japan could thrive on the global stage.\n\n";
+            endStatementContent.innerText = "Unfortunately, Meiji Japan has succumbed to unrest and failed to achieve the full breadth of modernization it set its sights on. Perhaps, with a bit better strategy, Japan could thrive on the global stage.\n\n";
         const endStatsContent = SimUI.createBoxContent(true); // centered box content
         endStatsContent.innerText = `FINAL STATS:\n${this.statsToString()}`
 
@@ -225,7 +225,7 @@ class SimState {
         const startBox = SimUI.createEventBox();
         const startBoxContent = SimUI.createBoxContent();
         const startBoxText = document.createElement("p");
-        startBoxText.innerText = "In Genrō Simulator, you take the reigns as a shishi-turned-oligarch in 1870, looking ahead at an era of modernization. Along with your fellow Dajō-kan members, it is your responsibility to make calls that further Japan's modernization efforts without stirring too much controversy and unrest.";
+        startBoxText.innerText = "In Genrō Simulator, you take the reigns as a shishi-turned-oligarch in 1870, looking ahead at an era of modernization. Along with your fellow Dajō-kan members, it is your responsibility to make calls that further Japan's modernization efforts without stirring excessive controversy and unrest.";
         const startButtonContainer = SimUI.createButtonContainer();
         const startButton = SimUI.createButtonElement("Start Simulation", SimState.INITIAL_YEAR.toString());
         startButton.onclick = () => this.startSim();
@@ -556,7 +556,7 @@ class FirstDecadeEvents {
             }
         ),
         new SimEvent("Construct Textile Mill", FirstDecadeEvents.Costs.HIGH,
-            "A state-sponsored textile mill shows the efficiency of mechanized, Western-inspired production. The new industrial economy is supported.",
+            "A state-sponsored, brick-built textile mill shows the efficiency of mechanized, Western-inspired production. Women who previously worked in small-scale sericulture businesses quickly find employment at the mill. The new industrial export economy is supported.",
             {
                 [Stats.INDUSTRY]: 40,
                 [Stats.UNREST]: 5
@@ -646,7 +646,7 @@ class FirstDecadeEvents {
             }
         ),
         new SimEvent("Imperial Procession", FirstDecadeEvents.Costs.HIGH,
-            "Emperor Meiji and Empress Shōken are wheeled in a Western-style carriage across populous areas with vibrant fanfare. The public, enthralled by the heightened presentation, is further united under the glorified emperor and sees a rise in national fervor.",
+            "Emperor Meiji and Empress Shōken are wheeled in a Western-style carriage across populous areas with vibrant fanfare. The public, enthralled by the heightened presentation, is further united under the glorified Emperor and sees a rise in national fervor.",
             {
                 [Stats.NATIONALISM]: 45,
                 [Stats.UNREST]: -20
@@ -655,7 +655,7 @@ class FirstDecadeEvents {
     ]
     static FREE_EVENTS = [
         new SimEvent("Encourage Zaibatsu Formation", FirstDecadeEvents.Costs.FREE,
-            "Merchant families are contracted favorably to build industry. There are rumors, however, that national power is going to the hands of private enterprise.",
+            "Managerially-experienced families are contracted favorably to build industry. There are rumors, however, that national power is going to the hands of private enterprise.",
             {
                 [Stats.INDUSTRY]: 10,
                 [Stats.UNREST]: 15
@@ -676,16 +676,8 @@ class FirstDecadeEvents {
                 [Stats.UNREST]: 10
             }
         ),
-        new SimEvent("Introduce Gregorian Calendar", FirstDecadeEvents.Costs.FREE,
-            "The Western calendar system begins to take the place of the traditional calendar. Merchants are pleased; traditionalists aren't.",
-            {
-                [Stats.INDUSTRY]: 5,
-                [Stats.NATIONALISM]: 15,
-                [Stats.UNREST]: 5
-            }
-        ),
         new SimEvent("Work on Constitution Drafting", FirstDecadeEvents.Costs.FREE,
-            "Intellectuals are brought together to draft a modern, Western-style constitution. Though not close to ready, the promises of the Charter Oath are seeing attention.",
+            "Intellectuals are brought together to work toward drafting a modern, Western-style constitution. Though not close to ready, the promises of the Charter Oath are seeing attention.",
             {
                 [Stats.INDUSTRY]: 5,
                 [Stats.NATIONALISM]: 20,
@@ -693,7 +685,7 @@ class FirstDecadeEvents {
             }
         ),
         new SimEvent("Encourage Urban Migration", FirstDecadeEvents.Costs.FREE,
-            "Peasants increasingly move to cities seeking factory work. Traditional village life is affected, as are rural citizens' perspectives on urbanism.",
+            "Rural workers increasingly move to cities seeking factory work. Traditional village life is affected, as are rural citizens' perspectives on urbanism.",
             {
                 [Stats.INDUSTRY]: 15,
                 [Stats.UNREST]: 25
@@ -707,7 +699,7 @@ class FirstDecadeEvents {
             }
         ),
         new SimEvent("Enforce State Shinto", FirstDecadeEvents.Costs.FREE,
-            "Surveyors are sent to enforce that residents worship the divine emperor and his absolute authority. In doing so, the nation grew more unified under this manufactured religious patriotism, but some harbor growing resentment.",
+            "Surveyors are sent to enforce that residents worship the divine Emperor and his absolute authority. In doing so, the nation grows more unified under this invented religious traditionalism, but some harbor growing resentment.",
             {
                 [Stats.NATIONALISM]: 25,
                 [Stats.UNREST]: 10
@@ -719,53 +711,52 @@ class FirstDecadeEvents {
 class SecondDecadeEvents {
     static Costs = {
         FREE: 0,
-        LOW: 75,
-        MODERATE: 150,
-        HIGH: 225,
-        VERY_HIGH: 300
+        LOW: 100,
+        MODERATE: 200,
+        HIGH: 400,
+        VERY_HIGH: 500
     }
 
     static COST_EVENTS = [
-        new SimEvent("Commission Railway Survey", FirstDecadeEvents.Costs.LOW,
-            "Surveyors are sent to chart routes for a future railway network, enabling future expansion. The promise of increased connectivity creates national optimism.",
+        new SimEvent("Expand Railway Lines", SecondDecadeEvents.Costs.MODERATE,
+            "The expansion of existing railways to new areas opens up doors to additional industry and may benefit military endeavors.",
             {
-                [Stats.INDUSTRY]: 10,
-                [Stats.NATIONALISM]: 10,
+                [Stats.INDUSTRY]: 20,
+                [Stats.MILITARY]: 10,
                 [Stats.UNREST]: -10
             }
         ),
-        new SimEvent("Construct Textile Mill", FirstDecadeEvents.Costs.HIGH,
-            "A state-sponsored textile mill shows the efficiency of mechanized, Western-inspired production. The new industrial economy is supported.",
+        new SimEvent("Expand Textile Mill", SecondDecadeEvents.Costs.HIGH,
+            "A textile mill is expanded to include a small school and additional facilities to appeal to prospective employees.",
             {
                 [Stats.INDUSTRY]: 40,
                 [Stats.UNREST]: 5
             }
         ),
-        new SimEvent("Build Telegraph Lines", FirstDecadeEvents.Costs.MODERATE,
+        new SimEvent("Expand Telegraph Lines", SecondDecadeEvents.Costs.MODERATE,
             "Instant communication is hugely beneficial to logistics. The speed of information has great implications for industry and military alike.",
             {
-                [Stats.INDUSTRY]: 15,
-                [Stats.MILITARY]: 10,
-                [Stats.NATIONALISM]: 5
+                [Stats.INDUSTRY]: 25,
+                [Stats.MILITARY]: 15,
+                [Stats.NATIONALISM]: 10
             }
         ),
-        new SimEvent("Fund Shipyard", FirstDecadeEvents.Costs.VERY_HIGH,
+        new SimEvent("Fund Shipyard", SecondDecadeEvents.Costs.VERY_HIGH,
             "A modern shipyard, capable of constructing steam-powered sea vessels, is funded. This is both a commercial and defensive boon.",
             {
-                [Stats.INDUSTRY]: 20,
-                [Stats.MILITARY]: 35,
-                [Stats.UNREST]: -10
+                [Stats.INDUSTRY]: 35,
+                [Stats.MILITARY]: 45
             }
         ),
-        new SimEvent("Open Technical Institute", FirstDecadeEvents.Costs.HIGH,
-            "Young students at this new school study engineering and science taken from Western texts.",
+        new SimEvent("Fund Technical Institute", SecondDecadeEvents.Costs.HIGH,
+            "Young students at this school have increased access to crucial information.",
             {
                 [Stats.INDUSTRY]: 30,
-                [Stats.NATIONALISM]: 20,
-                [Stats.UNREST]: -10
+                [Stats.MILITARY]: 20,
+                [Stats.NATIONALISM]: 20
             }
         ),
-        new SimEvent("Translate European Law", FirstDecadeEvents.Costs.LOW,
+        new SimEvent("Translate European Law", SecondDecadeEvents.Costs.LOW,
             "Modern legal frameworks are studied and adapted. The nation appears more \"civilized\" in the eyes of foreign powers.",
             {
                 [Stats.MILITARY]: 15,
@@ -773,35 +764,7 @@ class SecondDecadeEvents {
                 [Stats.UNREST]: -15
             }
         ),
-        new SimEvent("Send Students Abroad", FirstDecadeEvents.Costs.LOW,
-            "Young scholars are sent West to Europe and the U.S. to learn advanced sciences and military tactics. Some come back inspired.",
-            {
-                [Stats.INDUSTRY]: 15,
-                [Stats.MILITARY]: 15,
-                [Stats.NATIONALISM]: -10
-            }
-        ),
-        new SimEvent("Push for Conscription", FirstDecadeEvents.Costs.LOW,
-            "All classes are subject to military service now. Many members of the old warrior order are uncertain.",
-            {
-                [Stats.MILITARY]: 30,
-                [Stats.UNREST]: 10
-            }
-        ),
-        new SimEvent("Buy Modern Rifles", FirstDecadeEvents.Costs.MODERATE,
-            "Military training remains slightly behind technology, but firepower increases immediately as modern firearms are imported in bulk.",
-            {
-                [Stats.MILITARY]: 30
-            }
-        ),
-        new SimEvent("Consult Military Advice", FirstDecadeEvents.Costs.LOW,
-            "A European officer is appointed to reorganize and modernize the army and its training. This improved discipline and strategy comes at the cost of pride.",
-            {
-                [Stats.MILITARY]: 30,
-                [Stats.NATIONALISM]: -10
-            }
-        ),
-        new SimEvent("Invest in Naval Force", FirstDecadeEvents.Costs.HIGH,
+        new SimEvent("Invest in Naval Force", SecondDecadeEvents.Costs.HIGH,
             "Steam power and iron-hulled ships increase maritime power, which is increasingly important to military officials.",
             {
                 [Stats.INDUSTRY]: 15,
@@ -809,24 +772,56 @@ class SecondDecadeEvents {
                 [Stats.UNREST]: -5
             }
         ),
-        new SimEvent("Imperial Procession", FirstDecadeEvents.Costs.HIGH,
+        new SimEvent("Imperial Procession", SecondDecadeEvents.Costs.HIGH,
             "Emperor Meiji and Empress Shōken are wheeled in a Western-style carriage across populous areas with vibrant fanfare. The public, enthralled by the heightened presentation, is further united under the glorified emperor and sees a rise in national fervor.",
             {
                 [Stats.NATIONALISM]: 45,
                 [Stats.UNREST]: -20
             }
+        ),
+        new SimEvent("Commission Military Propaganda", SecondDecadeEvents.Costs.LOW,
+            "Despite no present conflicts, woodblock artists are commissioned to depict Emperor Meiji leading a massive army. Nationalist fervor grows and a sense of sacrificial duty to the Emperor is bolstered.",
+            {
+                [Stats.MILITARY]: 30,
+                [Stats.NATIONALISM]: 20,
+            }
+        ),
+        new SimEvent("Invest in Zaibatsu", SecondDecadeEvents.Costs.VERY_HIGH,
+            "The transmission of money around to different branches freely creates a highly effective system of production.",
+            {
+                [Stats.INDUSTRY]: 75,
+                [Stats.UNREST]: 15
+            }
+        ),
+        new SimEvent("Commission High Society Art", SecondDecadeEvents.Costs.LOW,
+            "Artwork depicting fashionable women with Western hairstyles and dresses is circulated. Society further associates the West with modernity.",
+            {
+                [Stats.NATIONALISM]: 30,
+                [Stats.UNREST]: -10
+            }
+        ),
+        new SimEvent("Expand Coal Mining", SecondDecadeEvents.Costs.HIGH,
+            "Coal production increases to meet the demands of factories and railways. Labor complaints and concern from locals stir unrest.",
+            {
+                [Stats.INDUSTRY]: 35,
+                [Stats.MILITARY]: 10,
+                [Stats.UNREST]: 15
+            }
+        ),
+        new SimEvent("Improve Rural Roads", SecondDecadeEvents.Costs.LOW,
+            "Investment in rural road networks improves trade and reduces isolation in rural communities.",
+            {
+                [Stats.INDUSTRY]: 25,
+                [Stats.UNREST]: -35
+            }
+        ),
+        new SimEvent("Stage Yasukuni Shrine Visit", SecondDecadeEvents.Costs.MODERATE,
+            "The Emperor visits Yasukuni Shrine, in doing so reinforcing national unity under his divine self."
         )
     ];
 
     static FREE_EVENTS = [
-        new SimEvent("Encourage Zaibatsu Formation", FirstDecadeEvents.Costs.FREE,
-            "Merchant families are contracted favorably to build industry. There are rumors, however, that national power is going to the hands of private enterprise.",
-            {
-                [Stats.INDUSTRY]: 10,
-                [Stats.UNREST]: 15
-            }
-        ),
-        new SimEvent("Adopt Western Dress", FirstDecadeEvents.Costs.FREE,
+        new SimEvent("Adopt Western Dress", SecondDecadeEvents.Costs.FREE,
             "You and fellow officials appear in suits rather than robes. This redefinition of fashion is inspiring, but scares many.",
             {
                 [Stats.INDUSTRY]: 5,
@@ -834,7 +829,7 @@ class SecondDecadeEvents {
                 [Stats.UNREST]: 10
             }
         ),
-        new SimEvent("Work on Constitution Drafting", FirstDecadeEvents.Costs.FREE,
+        new SimEvent("Work on Constitution Drafting", SecondDecadeEvents.Costs.FREE,
             "Intellectuals are brought together to draft a modern, Western-style constitution. Though not close to ready, the promises of the Charter Oath are seeing attention.",
             {
                 [Stats.INDUSTRY]: 5,
@@ -842,25 +837,38 @@ class SecondDecadeEvents {
                 [Stats.UNREST]: -20
             }
         ),
-        new SimEvent("Encourage Urban Migration", FirstDecadeEvents.Costs.FREE,
+        new SimEvent("Encourage Urban Migration", SecondDecadeEvents.Costs.FREE,
             "Peasants increasingly move to cities seeking factory work. Traditional village life is affected, as are rural citizens' perspectives on urbanism.",
             {
                 [Stats.INDUSTRY]: 15,
                 [Stats.UNREST]: 25
             }
         ),
-        new SimEvent("Promote Bunmei Kaika", FirstDecadeEvents.Costs.FREE,
+        new SimEvent("Promote Bunmei Kaika", SecondDecadeEvents.Costs.FREE,
             "Posters, pamphlets, and artwork celebrate the virtues of modernization.",
             {
                 [Stats.NATIONALISM]: 15,
                 [Stats.UNREST]: -10
             }
         ),
-        new SimEvent("Enforce State Shinto", FirstDecadeEvents.Costs.FREE,
-            "Surveyors are sent to enforce that residents worship the divine emperor and his absolute authority. In doing so, the nation grew more unified under this manufactured religious patriotism, but some harbor growing resentment.",
+        new SimEvent("Enforce State Shinto", SecondDecadeEvents.Costs.FREE,
+            "Surveyors are sent to enforce that residents worship the divine Emperor and his absolute authority. In doing so, the nation grew more unified under this manufactured religious patriotism, but some harbor growing resentment.",
             {
                 [Stats.NATIONALISM]: 25,
                 [Stats.UNREST]: 10
+            }
+        ),
+        new SimEvent("Emphasize Bushidō", FirstDecadeEvents.Costs.FREE,
+            "The \"way of the warrior\" is emphasized in military code; duty is said to be \"heavier than a mountain,\" and death in service \"lighter than a feather.\" Willingness to sacrifice for the Emperor is at a peak.",
+            {
+                [Stats.MILITARY]: 20,
+                [Stats.NATIONALISM]: 10
+            }
+        ),
+        new SimEvent("Encourage Private Investment", FirstDecadeEvents.Costs.FREE,
+            "Officials encourage private merchants and investors to expand into manufacturing. Private industry grows steadily.",
+            {
+                [Stats.INDUSTRY]: 25
             }
         )
     ];
@@ -1145,7 +1153,7 @@ class SimEventHandler {
             ],
             { [Stats.MILITARY]: 500 },
             new SimSpecialEvent("Kapsin Coup", Seasons.WINTER,
-                "Reformist officials in Korea, inspired by Japanese modernization, want assistance in overthrowing the pro-Qing conservative court. However, Qing troops remain stationed in Seoul.",
+                "Reformist officials in Korea, inspired by Japanese modernization, want assistance in overthrowing the pro-Qing conservative court. However, Qing troops remain stationed in Seoul. Concerns over Korea as the \"dagger to the throat\" of Japan are only rising.",
                 [
                     new SimEvent("Send Military Support", 225,
                         "Covert military support is sent to the reformists. Unfortunately, the coup is unsuccessful despite Japan's support; Qing leadership is reinforced and Japan must make concessions.",
@@ -1178,7 +1186,7 @@ class SimEventHandler {
             "After years of study, debate, and guidance, Itō Hirobumi prepares a constitution inspired largely by the Prussian model. Before its presentation, the nature of the constitution is discussed.",
             [
                 new SimEvent("Strong Imperial Constitution", 0,
-                    "The new constitution emphasizes the sovereignty of the emperor and allows limited parliamentary participation. Modernization and imperial authority are balanced.",
+                    "The new constitution emphasizes the sovereignty of the Emperor and allows limited parliamentary participation. Modernization and imperial authority are balanced.",
                     {
                         [Stats.NATIONALISM]: 70,
                         [Stats.MILITARY]: 20,
@@ -1186,7 +1194,7 @@ class SimEventHandler {
                     }
                 ),
                 new SimEvent("Suggest Representative Constitution", 0,
-                    "Your suggestion is unpopular among fellow genrō, who hold reservations about establishing full representation. As such, it is ignored. A constitution emphasizing the sovereignty of the emperor and allowing quite limited parliamentary participation is passed.",
+                    "Your suggestion is unpopular among fellow genrō, who hold reservations about establishing full representation. As such, it is ignored. A constitution emphasizing the sovereignty of the Emperor and allowing quite limited parliamentary participation is passed.",
                     {
                         [Stats.NATIONALISM]: 70,
                         [Stats.MILITARY]: 20,
@@ -1199,7 +1207,7 @@ class SimEventHandler {
             "Concerned with upholding traditional loyalty and social order, the government drafts a statement defining the moral foundations of education.",
             [
                 new SimEvent("Emphasize Imperial Authority", 0,
-                    "Copies of the rescript are sent to schools across the empire, where students memorize its teachings on filial duty and service to the emperor. National unity strengthens and education becomes more ideologically rigid.",
+                    "Copies of the rescript are sent to schools across the empire, where students memorize its teachings on filial duty and service to the Emperor. National unity strengthens and education becomes more ideologically rigid.",
                     {
                         [Stats.NATIONALISM]: 50,
                         [Stats.MILITARY]: 25
@@ -1301,6 +1309,7 @@ console.log("1880-1890 EVENTS:",
     "\n\tCost Events:", SecondDecadeEvents.COST_EVENTS.length,
     "\n\tFree Events:", SecondDecadeEvents.FREE_EVENTS.length
 );
+console.log("SPECIAL EVENTS:", Object.keys(SimEventHandler.BASE_SPECIAL_EVENTS).length);
 
 SimState.instance().reset();
 SimUI.resetButton.onclick = () => {
