@@ -48,7 +48,7 @@ class SimState {
 
     // state at the start of the simulation
     static INITIAL_YEAR = 1870;
-    static NUM_YEARS = 30;
+    static NUM_YEARS = 20;
     static INITIAL_SEASON = Seasons.SPRING;
     static INITIAL_INDUSTRY = 20;
     static INITIAL_MILITARY = 20;
@@ -187,7 +187,7 @@ class SimState {
         const endBox = SimUI.createEventBox();
         const endStatementContent = SimUI.createBoxContent();
         if (this.won)
-            endStatementContent.innerText = "Congratulations! Through your efforts, the Japanese developmental state has achieved marked success in modernizing in the Western image in just a short time. There is still a ways to go before the world sees Japan for the global power it strives to be.\n\n";
+            endStatementContent.innerText = "Congratulations! Through your efforts, the Japanese developmental state has achieved marked success, modernizing in the Western image in just a short time. There is still a ways to go before the world sees Japan for the global power it strives to be.\n\n";
         else
             endStatementContent.innerText = "Unfortunately, Japan's developmental state has succumbed to unrest and failed to achieve the full breadth of modernization it set its sights on. Perhaps, with a bit better strategy, Japan could thrive on the global stage.\n\n";
         const endStatsContent = SimUI.createBoxContent(true); // centered box content
@@ -577,14 +577,6 @@ class FirstDecadeEvents {
                 [Stats.NATIONALISM]: 5
             }
         ),
-        new SimEvent("Build Telegraph Lines", FirstDecadeEvents.Costs.MODERATE,
-            "Instant communication is hugely beneficial to logistics. The speed of information has great implications for industry and military alike.",
-            {
-                [Stats.INDUSTRY]: 15,
-                [Stats.MILITARY]: 10,
-                [Stats.NATIONALISM]: 5
-            }
-        ),
         new SimEvent("Fund Shipyard", FirstDecadeEvents.Costs.VERY_HIGH,
             "A modern shipyard, capable of constructing steam-powered sea vessels, is funded. This is both a commercial and defensive boon.",
             {
@@ -652,6 +644,13 @@ class FirstDecadeEvents {
                 [Stats.MILITARY]: 30,
                 [Stats.UNREST]: -5
             }
+        ),
+        new SimEvent("Imperial Procession", FirstDecadeEvents.Costs.HIGH,
+            "Emperor Meiji and Empress Shōken are wheeled in a Western-style carriage across populous areas with vibrant fanfare. The public, enthralled by the heightened presentation, is further united under the glorified emperor and sees a rise in national fervor.",
+            {
+                [Stats.NATIONALISM]: 45,
+                [Stats.UNREST]: -20
+            }
         )
     ]
     static FREE_EVENTS = [
@@ -706,8 +705,165 @@ class FirstDecadeEvents {
                 [Stats.NATIONALISM]: 15,
                 [Stats.UNREST]: -10
             }
+        ),
+        new SimEvent("Enforce State Shinto", FirstDecadeEvents.Costs.FREE,
+            "Surveyors are sent to enforce that residents worship the divine emperor and his absolute authority. In doing so, the nation grew more unified under this manufactured religious patriotism, but some harbor growing resentment.",
+            {
+                [Stats.NATIONALISM]: 25,
+                [Stats.UNREST]: 10
+            }
         )
     ]
+}
+
+class SecondDecadeEvents {
+    static Costs = {
+        FREE: 0,
+        LOW: 75,
+        MODERATE: 150,
+        HIGH: 225,
+        VERY_HIGH: 300
+    }
+
+    static COST_EVENTS = [
+        new SimEvent("Commission Railway Survey", FirstDecadeEvents.Costs.LOW,
+            "Surveyors are sent to chart routes for a future railway network, enabling future expansion. The promise of increased connectivity creates national optimism.",
+            {
+                [Stats.INDUSTRY]: 10,
+                [Stats.NATIONALISM]: 10,
+                [Stats.UNREST]: -10
+            }
+        ),
+        new SimEvent("Construct Textile Mill", FirstDecadeEvents.Costs.HIGH,
+            "A state-sponsored textile mill shows the efficiency of mechanized, Western-inspired production. The new industrial economy is supported.",
+            {
+                [Stats.INDUSTRY]: 40,
+                [Stats.UNREST]: 5
+            }
+        ),
+        new SimEvent("Build Telegraph Lines", FirstDecadeEvents.Costs.MODERATE,
+            "Instant communication is hugely beneficial to logistics. The speed of information has great implications for industry and military alike.",
+            {
+                [Stats.INDUSTRY]: 15,
+                [Stats.MILITARY]: 10,
+                [Stats.NATIONALISM]: 5
+            }
+        ),
+        new SimEvent("Fund Shipyard", FirstDecadeEvents.Costs.VERY_HIGH,
+            "A modern shipyard, capable of constructing steam-powered sea vessels, is funded. This is both a commercial and defensive boon.",
+            {
+                [Stats.INDUSTRY]: 20,
+                [Stats.MILITARY]: 35,
+                [Stats.UNREST]: -10
+            }
+        ),
+        new SimEvent("Open Technical Institute", FirstDecadeEvents.Costs.HIGH,
+            "Young students at this new school study engineering and science taken from Western texts.",
+            {
+                [Stats.INDUSTRY]: 30,
+                [Stats.NATIONALISM]: 20,
+                [Stats.UNREST]: -10
+            }
+        ),
+        new SimEvent("Translate European Law", FirstDecadeEvents.Costs.LOW,
+            "Modern legal frameworks are studied and adapted. The nation appears more \"civilized\" in the eyes of foreign powers.",
+            {
+                [Stats.MILITARY]: 15,
+                [Stats.NATIONALISM]: 10,
+                [Stats.UNREST]: -15
+            }
+        ),
+        new SimEvent("Send Students Abroad", FirstDecadeEvents.Costs.LOW,
+            "Young scholars are sent West to Europe and the U.S. to learn advanced sciences and military tactics. Some come back inspired.",
+            {
+                [Stats.INDUSTRY]: 15,
+                [Stats.MILITARY]: 15,
+                [Stats.NATIONALISM]: -10
+            }
+        ),
+        new SimEvent("Push for Conscription", FirstDecadeEvents.Costs.LOW,
+            "All classes are subject to military service now. Many members of the old warrior order are uncertain.",
+            {
+                [Stats.MILITARY]: 30,
+                [Stats.UNREST]: 10
+            }
+        ),
+        new SimEvent("Buy Modern Rifles", FirstDecadeEvents.Costs.MODERATE,
+            "Military training remains slightly behind technology, but firepower increases immediately as modern firearms are imported in bulk.",
+            {
+                [Stats.MILITARY]: 30
+            }
+        ),
+        new SimEvent("Consult Military Advice", FirstDecadeEvents.Costs.LOW,
+            "A European officer is appointed to reorganize and modernize the army and its training. This improved discipline and strategy comes at the cost of pride.",
+            {
+                [Stats.MILITARY]: 30,
+                [Stats.NATIONALISM]: -10
+            }
+        ),
+        new SimEvent("Invest in Naval Force", FirstDecadeEvents.Costs.HIGH,
+            "Steam power and iron-hulled ships increase maritime power, which is increasingly important to military officials.",
+            {
+                [Stats.INDUSTRY]: 15,
+                [Stats.MILITARY]: 30,
+                [Stats.UNREST]: -5
+            }
+        ),
+        new SimEvent("Imperial Procession", FirstDecadeEvents.Costs.HIGH,
+            "Emperor Meiji and Empress Shōken are wheeled in a Western-style carriage across populous areas with vibrant fanfare. The public, enthralled by the heightened presentation, is further united under the glorified emperor and sees a rise in national fervor.",
+            {
+                [Stats.NATIONALISM]: 45,
+                [Stats.UNREST]: -20
+            }
+        )
+    ];
+
+    static FREE_EVENTS = [
+        new SimEvent("Encourage Zaibatsu Formation", FirstDecadeEvents.Costs.FREE,
+            "Merchant families are contracted favorably to build industry. There are rumors, however, that national power is going to the hands of private enterprise.",
+            {
+                [Stats.INDUSTRY]: 10,
+                [Stats.UNREST]: 15
+            }
+        ),
+        new SimEvent("Adopt Western Dress", FirstDecadeEvents.Costs.FREE,
+            "You and fellow officials appear in suits rather than robes. This redefinition of fashion is inspiring, but scares many.",
+            {
+                [Stats.INDUSTRY]: 5,
+                [Stats.NATIONALISM]: 15,
+                [Stats.UNREST]: 10
+            }
+        ),
+        new SimEvent("Work on Constitution Drafting", FirstDecadeEvents.Costs.FREE,
+            "Intellectuals are brought together to draft a modern, Western-style constitution. Though not close to ready, the promises of the Charter Oath are seeing attention.",
+            {
+                [Stats.INDUSTRY]: 5,
+                [Stats.NATIONALISM]: 20,
+                [Stats.UNREST]: -20
+            }
+        ),
+        new SimEvent("Encourage Urban Migration", FirstDecadeEvents.Costs.FREE,
+            "Peasants increasingly move to cities seeking factory work. Traditional village life is affected, as are rural citizens' perspectives on urbanism.",
+            {
+                [Stats.INDUSTRY]: 15,
+                [Stats.UNREST]: 25
+            }
+        ),
+        new SimEvent("Promote Bunmei Kaika", FirstDecadeEvents.Costs.FREE,
+            "Posters, pamphlets, and artwork celebrate the virtues of modernization.",
+            {
+                [Stats.NATIONALISM]: 15,
+                [Stats.UNREST]: -10
+            }
+        ),
+        new SimEvent("Enforce State Shinto", FirstDecadeEvents.Costs.FREE,
+            "Surveyors are sent to enforce that residents worship the divine emperor and his absolute authority. In doing so, the nation grew more unified under this manufactured religious patriotism, but some harbor growing resentment.",
+            {
+                [Stats.NATIONALISM]: 25,
+                [Stats.UNREST]: 10
+            }
+        )
+    ];
 }
 
 class SimEventHandler {
@@ -849,7 +1005,7 @@ class SimEventHandler {
                         [Stats.UNREST]: -30
                     }
                 )
-            ], { [Stats.MILITARY]: 150 }, // needs 150 military stat to possibly succeed
+            ], { [Stats.MILITARY]: 100 }, // needs 150 military stat to possibly succeed
             null                          // alternate event info
         ),
         [combineYearAndSeason(1877, Seasons.SPRING)]: new SimSpecialEvent("The Satsuma Rebellion", Seasons.SPRING,
@@ -861,8 +1017,7 @@ class SimEventHandler {
                         [Stats.MILITARY]: 20,
                         [Stats.NATIONALISM]: 40,
                         [Stats.UNREST]: -30
-                    },
-                    true, false     // this is a win condition and not a loss condition
+                    }
                 ),
                 new SimEvent("Negotiate with Rebels", 100,
                     "The rebels are appeased by changes to the terms of the modern military and benefits for former samurai. The rebellion fades, but not without doubts of the new government's authority.",
@@ -873,16 +1028,207 @@ class SimEventHandler {
                     }
                 ),
                 new SimEvent("Ignore the Rebellion", 0,
-                    "The conflict drags on and critiques of Japan's modernization become highly mainstream. You save military resources, but at great cost.",
+                    "The conflict drags on and critiques of Japan's modernization become highly mainstream. You save military resources, but the revolutionaries gain ground. The Meiji government loses its hold over the people.",
                     {
                         [Stats.MILITARY]: 20,
-                        [Stats.NATIONALISM]: -40,
-                        [Stats.UNREST]: 40
+                        [Stats.NATIONALISM]: -800,
+                        [Stats.UNREST]: 300
                     },
                     false, true     // this is a loss condition and not a win condition
                 )
-            ], { [Stats.MILITARY]: 175 },
-            null
+            ], { [Stats.MILITARY]: 150 },
+            new SimSpecialEvent("The Satsuma Rebellion", Seasons.SPRING,
+                new SimEvent("Crush the Rebellion", 200,
+                    "The building army, not quite equipped is unable to stop the samurai rebels. The Meiji government loses control.",
+                    {
+                        [Stats.MILITARY]: -100,
+                        [Stats.NATIONALISM]: -80,
+                        [Stats.UNREST]: 100
+                    },
+                    false, true     // this is a loss condition with inadequate military stat
+                ),
+                new SimEvent("Negotiate with Rebels", 100,
+                    "The rebels are appeased by changes to the terms of the modern military and benefits for former samurai. The rebellion fades, but not without doubts of the new government's authority.",
+                    {
+                        [Stats.MILITARY]: -10,
+                        [Stats.NATIONALISM]: -30,
+                        [Stats.UNREST]: -50
+                    }
+                ),
+                new SimEvent("Ignore the Rebellion", 0,
+                    "The conflict drags on and critiques of Japan's modernization become highly mainstream. You save military resources, but the revolutionaries gain ground. The Meiji government loses its hold over the people.",
+                    {
+                        [Stats.MILITARY]: 20,
+                        [Stats.NATIONALISM]: -80,
+                        [Stats.UNREST]: 300
+                    },
+                    false, true     // this is a loss condition and not a win condition
+                )
+            )
+        ),
+        [combineYearAndSeason(1881, Seasons.AUTUMN)]: new SimSpecialEvent("Freedom and People's Rights", Seasons.AUTUMN,
+            "A nationwide movement of former samurai, rural elites, and intellectuals like former oligarch Itagaki Taisuke demand a national assembly and constitutional government.",
+            [
+                new SimEvent("Promise a Constitution", 75,
+                    "Despite reluctance from authoritarian advocates like Itō Hirobumi, an Imperial Rescript promises national constitution will be drafted and an assembly convened within the decade. This forces a slight diversion of attention within the government.",
+                    {
+                        [Stats.INDUSTRY]: -15,
+                        [Stats.MILITARY]: -15,
+                        [Stats.NATIONALISM]: 50,
+                        [Stats.UNREST]: -50
+                    }
+                ),
+                new SimEvent("Suppress the Movement", 225,
+                    "Police powers are expanded and political societies advocating democracy are silenced. The government maintains authority, but resentment grows among activists and rural elites.",
+                    {
+                        [Stats.MILITARY]: 45,
+                        [Stats.NATIONALISM]: -30,
+                        [Stats.UNREST]: 30
+                    }
+                ),
+                new SimEvent("Ignore the Movement", 0,
+                    "Officials refrain from formally addressing political activists' demands. While the government avoids making concessions, frustration brews.",
+                    {
+                        [Stats.NATIONALISM]: -30,
+                        [Stats.UNREST]: 30
+                    }
+                )
+            ]
+        ),
+        [combineYearAndSeason(1882, Seasons.SPRING)]: new SimSpecialEvent("The Matsukata Deflation", Seasons.SPRING,
+            "Finance Minister Matsukata Masayoshi tightens the money supply to stop inflation and stabilize the yen. Rice prices are falling and don't look to be rising under the policies any time soon.",
+            [
+                new SimEvent("Moderate Reform", 150,
+                    "The government continues to stabilize the currency, but attempts to ease impact on rural communities. Economic recovery proceeds more slowly but unrest becomes less explosive.",
+                    {
+                        [Stats.INDUSTRY]: 15,
+                        [Stats.UNREST]: 15
+                    }
+                ),
+                new SimEvent("Continue Policy", 0,
+                    "The government continues enforcing harsh fiscal discipline. Finances stabilize but many farmers and small businesses are devastated.",
+                    {
+                        [Stats.INDUSTRY]: 50,
+                        [Stats.UNREST]: 75
+                    }
+                )
+            ]
+        ),
+        [combineYearAndSeason(1884, Seasons.WINTER)]: new SimSpecialEvent("Kapsin Coup", Seasons.WINTER,
+            "Reformist officials in Korea, inspired by Japanese modernization, want assistance in overthrowing the pro-Qing conservative court. However, Qing troops remain stationed in Seoul.",
+            [
+                new SimEvent("Send Military Support", 225,
+                    "Covert military support is sent to the reformists. Thanks to the development of the army, the Qing forces are toppled and the reformists take charge; conditions are favorable to Japan.",
+                    {
+                        [Stats.INDUSTRY]: 70,
+                        [Stats.MILITARY]: 20,
+                        [Stats.NATIONALISM]: 70,
+                        [Stats.UNREST]: -30
+                    }
+                ),
+                new SimEvent("Support Covertly", 75,
+                    "Limited diplomatic support is provided to the reformists. The coup fails, but Japan avoids major backlash.",
+                    {
+                        [Stats.MILITARY]: 10,
+                        [Stats.NATIONALISM]: -20,
+                        [Stats.UNREST]: -20
+                    }
+                ),
+                new SimEvent("Remain Neutral", 0,
+                    "Concerns of military weakness lead the country to remain neutral. After a failed coup, reformist leaders flee to Japan.",
+                    {
+                        [Stats.MILITARY]: 20,
+                        [Stats.NATIONALISM]: -30,
+                        [Stats.UNREST]: -10
+                    }
+                )
+            ],
+            { [Stats.MILITARY]: 500 },
+            new SimSpecialEvent("Kapsin Coup", Seasons.WINTER,
+                "Reformist officials in Korea, inspired by Japanese modernization, want assistance in overthrowing the pro-Qing conservative court. However, Qing troops remain stationed in Seoul.",
+                [
+                    new SimEvent("Send Military Support", 225,
+                        "Covert military support is sent to the reformists. Unfortunately, the coup is unsuccessful despite Japan's support; Qing leadership is reinforced and Japan must make concessions.",
+                        {
+                            [Stats.MILITARY]: -30,
+                            [Stats.NATIONALISM]: -25,
+                            [Stats.UNREST]: 30
+                        }
+                    ),
+                    new SimEvent("Support Covertly", 75,
+                        "Limited diplomatic support is provided to the reformists. The coup fails, but Japan avoids major backlash.",
+                        {
+                            [Stats.MILITARY]: 10,
+                            [Stats.NATIONALISM]: -20,
+                            [Stats.UNREST]: -20
+                        }
+                    ),
+                    new SimEvent("Remain Neutral", 0,
+                        "Concerns of military weakness lead the country to remain neutral. After a failed coup, reformist leaders flee to Japan.",
+                        {
+                            [Stats.MILITARY]: 20,
+                            [Stats.NATIONALISM]: -30,
+                            [Stats.UNREST]: -10
+                        }
+                    )
+                ]
+            )
+        ),
+        [combineYearAndSeason(1889, Seasons.SPRING)]: new SimSpecialEvent("The Meiji Constitution", Seasons.SPRING,
+            "After years of study, debate, and guidance, Itō Hirobumi prepares a constitution inspired largely by the Prussian model. Before its presentation, the nature of the constitution is discussed.",
+            [
+                new SimEvent("Strong Imperial Constitution", 0,
+                    "The new constitution emphasizes the sovereignty of the emperor and allows limited parliamentary participation. Modernization and imperial authority are balanced.",
+                    {
+                        [Stats.NATIONALISM]: 70,
+                        [Stats.MILITARY]: 20,
+                        [Stats.UNREST]: -10
+                    }
+                ),
+                new SimEvent("Representative Constitution", 0,
+                    "The constitution expands the powers of the assembly, encouraging increased political participation but weakening centralized authority.",
+                    {
+                        [Stats.NATIONALISM]: 25,
+                        [Stats.UNREST]: -60
+                    }
+                ),
+                new SimEvent("Delay the Constitution", 0,
+                    "Reform is postponed once again, angering activists who have waited years for representative government.",
+                    {
+                        [Stats.NATIONALISM]: -40,
+                        [Stats.UNREST]: 100
+                    }
+                )
+            ]
+        ),
+        [combineYearAndSeason(1890, Seasons.AUTUMN)]: new SimSpecialEvent("Imperial Rescript on Education", Seasons.AUTUMN,
+            "Concerned with upholding traditional loyalty and social order, the government drafts a statement defining the moral foundations of education.",
+            [
+                new SimEvent("Emphasize Imperial Authority", 75,
+                    "Copies of the rescript are sent to schools across the empire, where students memorize its teachings on filial duty and service to the emperor. National unity strengthens and education becomes more ideologically rigid.",
+                    {
+                        [Stats.NATIONALISM]: 50,
+                        [Stats.MILITARY]: 25
+                    }, true, false
+                ),
+                new SimEvent("Emphasize Western Models", 75,
+                    "The education system is made to emphasize scientific and technical learning modeled after Western systems. Innovation increases, but traditionalists are concerned that national moral unity is weakening.",
+                    {
+                        [Stats.INDUSTRY]: 50,
+                        [Stats.NATIONALISM]: -20,
+                        [Stats.UNREST]: 20
+                    }, true, false
+                ),
+                new SimEvent("Adopt Flexible Policy", 0,
+                    "The rescript is interpreted flexibly, allowing schools greater balance between moral teachings and modern scientific education. The state becomes more ideologically unified, but not very restrictively.",
+                    {
+                        [Stats.INDUSTRY]: 25,
+                        [Stats.NATIONALISM]: 25,
+                        [Stats.MILITARY]: -10,
+                        [Stats.UNREST]: -20
+                    }, true, false
+                ),
+            ]
         )
     };
 
@@ -909,10 +1255,11 @@ class SimEventHandler {
     prepareYearEvents(year) {
         // check if we should update the event pool this year
         // (setting this up structurally for more event pools)
-        if (year >= 1880 && this.eventPool !== FirstDecadeEvents)
-            this.eventPool = FirstDecadeEvents;
-        else if (year >= 1890 && this.eventPool !== FirstDecadeEvents)
-            this.eventPool = FirstDecadeEvents;
+        if (year >= 1880 && this.eventPool !== SecondDecadeEvents) {
+            this.eventPool = SecondDecadeEvents;
+            this.costEventPool = [...SecondDecadeEvents.COST_EVENTS];
+            this.freeEventPool = [...SecondDecadeEvents.FREE_EVENTS];
+        }
 
         // randomly creating 2 events for the year
         let addedEvents = 0;
@@ -934,8 +1281,18 @@ class SimEventHandler {
 
         // if there is an event for this date
         if (eventKey in this.events) {
-            // CHECK REQUIREMENTS WHEN ALTERNATES IMPLEMENTED
-            return this.events[eventKey];
+            // storing this event for processing
+            const theEvent = this.events[eventKey];
+
+            // checking requirements and alternate if present
+            if (theEvent.requirements !== null && theEvent.alternate !== null)
+                for (const stat in theEvent.requirements) {
+                    if (SimState.instance().stats[stat] < theEvent.requirements[stat])
+                        return theEvent.alternate;
+                }
+            
+            // otherwise, either requirements are met or there are none
+            return theEvent;
         }
 
         // if, for any reason, no event should be presented for this date, return null
@@ -948,6 +1305,10 @@ class SimEventHandler {
 console.log("1870-1880 EVENTS:",
     "\n\tCost Events:", FirstDecadeEvents.COST_EVENTS.length,
     "\n\tFree Events:", FirstDecadeEvents.FREE_EVENTS.length
+);
+console.log("1880-1890 EVENTS:",
+    "\n\tCost Events:", SecondDecadeEvents.COST_EVENTS.length,
+    "\n\tFree Events:", SecondDecadeEvents.FREE_EVENTS.length
 );
 
 SimState.instance().reset();
