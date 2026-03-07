@@ -1099,10 +1099,10 @@ class SimEventHandler {
             "Finance Minister Matsukata Masayoshi tightens the money supply to stop inflation and stabilize the yen. Rice prices are falling and don't look to be rising under the policies any time soon.",
             [
                 new SimEvent("Moderate Reform", 150,
-                    "The government continues to stabilize the currency, but attempts to ease impact on rural communities. Economic recovery proceeds more slowly but unrest becomes less explosive.",
+                    "Minister Matsukata is not fond of reform efforts and has the support of fellow genrō. Your suggestion is ignored and the policy is continued, stabilizing finances but devastating businesses and forcing many farmers into tenancy.",
                     {
-                        [Stats.INDUSTRY]: 15,
-                        [Stats.UNREST]: 15
+                        [Stats.INDUSTRY]: 50,
+                        [Stats.UNREST]: 75
                     }
                 ),
                 new SimEvent("Continue Policy", 0,
@@ -1185,18 +1185,12 @@ class SimEventHandler {
                         [Stats.UNREST]: -10
                     }
                 ),
-                new SimEvent("Representative Constitution", 0,
-                    "The constitution expands the powers of the assembly, encouraging increased political participation but weakening centralized authority.",
+                new SimEvent("Suggest Representative Constitution", 0,
+                    "Your suggestion is unpopular among fellow genrō, who hold reservations about establishing full representation. As such, it is ignored. A constitution emphasizing the sovereignty of the emperor and allowing quite limited parliamentary participation is passed.",
                     {
-                        [Stats.NATIONALISM]: 25,
-                        [Stats.UNREST]: -60
-                    }
-                ),
-                new SimEvent("Delay the Constitution", 0,
-                    "Reform is postponed once again, angering activists who have waited years for representative government.",
-                    {
-                        [Stats.NATIONALISM]: -40,
-                        [Stats.UNREST]: 100
+                        [Stats.NATIONALISM]: 70,
+                        [Stats.MILITARY]: 20,
+                        [Stats.UNREST]: -10
                     }
                 )
             ]
@@ -1204,28 +1198,25 @@ class SimEventHandler {
         [combineYearAndSeason(1890, Seasons.AUTUMN)]: new SimSpecialEvent("Imperial Rescript on Education", Seasons.AUTUMN,
             "Concerned with upholding traditional loyalty and social order, the government drafts a statement defining the moral foundations of education.",
             [
-                new SimEvent("Emphasize Imperial Authority", 75,
+                new SimEvent("Emphasize Imperial Authority", 0,
                     "Copies of the rescript are sent to schools across the empire, where students memorize its teachings on filial duty and service to the emperor. National unity strengthens and education becomes more ideologically rigid.",
                     {
                         [Stats.NATIONALISM]: 50,
                         [Stats.MILITARY]: 25
                     }, true, false
                 ),
-                new SimEvent("Emphasize Western Models", 75,
-                    "The education system is made to emphasize scientific and technical learning modeled after Western systems. Innovation increases, but traditionalists are concerned that national moral unity is weakening.",
+                new SimEvent("Emphasize Western Models", 0,
+                    "The genrō aren't fond of your concept; they wish for a rescript that will unite the youth under the absolute sovereignty and glory of Emperor Meiji. They go forward with their concept and ignore your suggestion.",
                     {
-                        [Stats.INDUSTRY]: 50,
-                        [Stats.NATIONALISM]: -20,
-                        [Stats.UNREST]: 20
+                        [Stats.NATIONALISM]: 50,
+                        [Stats.MILITARY]: 25
                     }, true, false
                 ),
-                new SimEvent("Adopt Flexible Policy", 0,
-                    "The rescript is interpreted flexibly, allowing schools greater balance between moral teachings and modern scientific education. The state becomes more ideologically unified, but not very restrictively.",
+                new SimEvent("Suggest Less Rigid Policy", 0,
+                    "The genrō aren't fond of your concept; they wish for a rescript that will unite the youth under the absolute sovereignty and glory of Emperor Meiji. They go forward with their concept and ignore your suggestion.",
                     {
-                        [Stats.INDUSTRY]: 25,
-                        [Stats.NATIONALISM]: 25,
-                        [Stats.MILITARY]: -10,
-                        [Stats.UNREST]: -20
+                        [Stats.NATIONALISM]: 50,
+                        [Stats.MILITARY]: 25
                     }, true, false
                 ),
             ]
